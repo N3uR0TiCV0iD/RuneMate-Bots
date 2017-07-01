@@ -1,0 +1,15 @@
+<manifest>
+	<main-class>com.loldie.bots.givemebeer.GiveMeBeer</main-class>
+	<name>GiveMeBeer</name>
+	<description>Gets beer for profit!</description>
+	<version>1.0.0</version>
+	<compatibility>
+		<game-type>RS3</game-type>
+	</compatibility>
+	<categories>
+		<category>MONEYMAKING</category>
+	</categories>
+    <resources>
+        <resource>com/loldie/bots/givemebeer/main_design.fxml</resource>
+    </resources>
+</manifest>
