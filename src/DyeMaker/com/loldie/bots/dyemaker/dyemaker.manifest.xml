@@ -1,0 +1,16 @@
+<manifest>
+	<main-class>com.loldie.bots.dyemaker.DyeMaker</main-class>
+	<name>DyeMaker</name>
+	<description>Makes dyes for profit!</description>
+	<version>1.0.0</version>
+	<compatibility>
+		<game-type>RS3</game-type>
+		<game-type>OSRS</game-type>
+	</compatibility>
+	<categories>
+		<category>MONEYMAKING</category>
+	</categories>
+    <resources>
+        <resource>com/loldie/bots/common/main_design.fxml</resource>
+    </resources>
+</manifest>

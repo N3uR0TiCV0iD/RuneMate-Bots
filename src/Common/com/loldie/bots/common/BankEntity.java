@@ -8,6 +8,7 @@ public class BankEntity
 	public BankEntity(String entityName, String actionName)
 	{
 		this.entityName = entityName;
+		this.actionName = actionName;
 	}
 	public String getEntityName()
 	{

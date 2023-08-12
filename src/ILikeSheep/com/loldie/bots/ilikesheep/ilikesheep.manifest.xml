@@ -10,6 +10,6 @@
 		<category>MONEYMAKING</category>
 	</categories>
     <resources>
-        <resource>com/loldie/bots/ilikesheep/main_design.fxml</resource>
+        <resource>com/loldie/bots/common/main_design.fxml</resource>
     </resources>
 </manifest>

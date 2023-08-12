@@ -1,9 +1,9 @@
 package com.loldie.bots.givemebeer.branches;
 import com.runemate.game.api.hybrid.location.Area;
+import com.loldie.bots.common.tasks.TalkToNPCTask;
 import com.loldie.bots.common.logic.LogicAreaBranch;
-import com.loldie.bots.givemebeer.tasks.OrderBeerTask;
 import com.runemate.game.api.hybrid.location.Coordinate;
-import com.loldie.bots.givemebeer.tasks.StartBeerOrderTask;
+import com.loldie.bots.common.tasks.SelectDialogOptionsTask;
 import com.loldie.bots.common.branches.IsChatDialogOpenBranch;
 public class InFaladorBarBranch extends LogicAreaBranch
 {
@@ -11,6 +11,6 @@ public class InFaladorBarBranch extends LogicAreaBranch
 	private static final Area BAR_AREA = new Area.Circular(BAR_POS, 10);
 	public InFaladorBarBranch()
 	{
-		super(BAR_AREA, new IsChatDialogOpenBranch(new OrderBeerTask(), new StartBeerOrderTask()), "Falador Bar");
+		super(BAR_AREA, new IsChatDialogOpenBranch(new SelectDialogOptionsTask("Ordering beer...", "Can I have a Dwarven Stout?"), new TalkToNPCTask(false, "Kaylee")), "Falador Bar");
 	}
 }

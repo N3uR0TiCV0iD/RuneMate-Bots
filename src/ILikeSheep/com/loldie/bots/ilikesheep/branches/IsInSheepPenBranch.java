@@ -12,7 +12,6 @@ public class IsInSheepPenBranch extends LogicBranch
 	@Override
 	protected boolean condition()
 	{
-		
 		Coordinate localPlayerPos = Players.getLocal().getPosition();
 		int playerXPos = localPlayerPos.getX();
 		int playerYPos = localPlayerPos.getY();

@@ -1,0 +1,13 @@
+<manifest>
+	<main-class>com.loldie.bots.getwoadleaves.GetWoadLeaves</main-class>
+	<name>GetWoadLeaves</name>
+	<description>Gets 500 woad leaves</description>
+	<version>1.0.0</version>
+	<compatibility>
+		<game-type>RS3</game-type>
+		<game-type>OSRS</game-type>
+	</compatibility>
+	<categories>
+		<category>OTHER</category>
+	</categories>
+</manifest>

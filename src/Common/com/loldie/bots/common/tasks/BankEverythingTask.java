@@ -1,11 +1,12 @@
 package com.loldie.bots.common.tasks;
+import com.loldie.bots.common.ITimedTaskDoneHandler;
 import com.loldie.bots.common.logic.LogicTask;
-import com.loldie.bots.common.banks.IBankingDoneHandler;
 import com.runemate.game.api.hybrid.local.hud.interfaces.Bank;
 public class BankEverythingTask extends LogicTask
 {
-	private IBankingDoneHandler bankingHandler;
-	public BankEverythingTask(IBankingDoneHandler bankingHandler)
+	private ITimedTaskDoneHandler bankingHandler;
+	public BankEverythingTask() { }
+	public BankEverythingTask(ITimedTaskDoneHandler bankingHandler)
 	{
 		this.bankingHandler = bankingHandler;
 	}
@@ -14,6 +15,9 @@ public class BankEverythingTask extends LogicTask
 	{
 		notifyNewTask("Banking everything...");
 		Bank.depositInventory();
-		bankingHandler.onBankingDone();
+		if (bankingHandler != null)
+		{
+			bankingHandler.onTimedTaskDone();
+		}
 	}
 }

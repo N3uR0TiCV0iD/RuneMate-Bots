@@ -1,0 +1,13 @@
+<manifest>
+	<main-class>com.loldie.bots.knightsword.KnightsSwordQuest</main-class>
+	<name>KnightSwordQuest</name>
+	<description>Completes the Knight's Sword Quest</description>
+	<version>1.0.0</version>
+	<compatibility>
+		<game-type>RS3</game-type>
+		<game-type>OSRS</game-type>
+	</compatibility>
+	<categories>
+		<category>QUESTING</category>
+	</categories>
+</manifest>

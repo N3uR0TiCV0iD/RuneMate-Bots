@@ -14,26 +14,27 @@ public class OpenBankTask extends LogicTask
 	private BankEntity objectEntity;
 	public OpenBankTask(BankEntity objectEntity, BankEntity npcEntity)
 	{
-		this.npcEntity = npcEntity;
-		this.generator = new Random();
+		if (objectEntity != null && npcEntity != null)
+		{
+			this.generator = new Random();
+		}
 		this.objectEntity = objectEntity;
+		this.npcEntity = npcEntity;
 	}
 	@Override
 	public void runNode()
 	{
 		boolean chooseObject;
-		boolean hasObjectEntity;
 		BankEntity chosenEntity;
 		LocatableEntity locatableEntity;
 		notifyNewTask("Opening bank...");
-		hasObjectEntity = objectEntity != null;
-		if (hasObjectEntity && npcEntity != null)
+		if (generator != null)
 		{
 			chooseObject = generator.nextBoolean();
 		}
 		else
 		{
-			chooseObject = hasObjectEntity;
+			chooseObject = objectEntity != null;
 		}
 		if (chooseObject)
 		{
@@ -45,6 +46,9 @@ public class OpenBankTask extends LogicTask
 			locatableEntity = Npcs.newQuery().names(npcEntity.getEntityName()).results().nearest();
 			chosenEntity = npcEntity;
 		}
+		/*
+		locatableEntity = Banks.getLoaded().nearest(); //random();
+		*/
 		if (locatableEntity != null)
 		{
 			Utils.turnCameraOrInteract(locatableEntity, chosenEntity.getActionName());

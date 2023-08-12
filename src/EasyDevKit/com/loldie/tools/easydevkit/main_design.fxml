@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TreeTableView fx:id="varpChangesTable" layoutX="15.0" layoutY="50.0" prefHeight="250.0" prefWidth="770.0" showRoot="false">
+        <columns>
+          <TreeTableColumn fx:id="varpChangesNameColumn" prefWidth="385.0" text="Name" />
+          <TreeTableColumn fx:id="varpChangesValueColumn" prefWidth="384.0" text="Value" />
+        </columns>
+      </TreeTableView>
+      <Button fx:id="clearVarpChangesButton" layoutX="15.0" layoutY="315.0" mnemonicParsing="false" onAction="#clearVarpChangesButton_OnAction" prefHeight="25.0" prefWidth="770.0" text="Clear" />
+      <Label layoutX="15.0" layoutY="15.0" text="Varp Changes:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

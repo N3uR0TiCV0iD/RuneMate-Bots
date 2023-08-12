@@ -1,0 +1,16 @@
+<manifest>
+	<main-class>com.loldie.tools.easydevkit.EasyDevKit</main-class>
+	<name>EasyDevKit</name>
+	<description>A Visual Development Kit!</description>
+	<version>1.0.0</version>
+	<compatibility>
+		<game-type>RS3</game-type>
+		<game-type>OSRS</game-type>
+	</compatibility>
+	<categories>
+		<category>DEVELOPER_TOOLS</category>
+	</categories>
+    <resources>
+        <resource>com/loldie/tools/easydevkit/main_design.fxml</resource>
+    </resources>
+</manifest>

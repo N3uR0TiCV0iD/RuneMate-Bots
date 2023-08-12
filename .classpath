@@ -3,7 +3,15 @@
 	<classpathentry kind="src" path="src/ILikeSheep"/>
 	<classpathentry kind="src" path="src/Common"/>
 	<classpathentry kind="src" path="src/GiveMeBeer"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src/KnightsSwordQuest"/>
+	<classpathentry kind="src" path="src/BotStudio"/>
+	<classpathentry kind="src" path="src/GetWoadLeaf"/>
+	<classpathentry kind="src" path="src/DyeMaker"/>
+	<classpathentry kind="src" path="src/DoTutorial"/>
+	<classpathentry excluding="com/loldie/tools/easydevkit/DevelopmentToolkit.java|com/loldie/tools/easydevkit/IgnoreMe.java" kind="src" path="src/EasyDevKit"/>
+	<classpathentry kind="src" path="src/ILikeCabbage"/>
+	<classpathentry kind="src" path="src/DeathRuneTrader"/>
 	<classpathentry kind="lib" path="C:/Users/Patrick/Documents/Eclipse IDE/RuneMate/dependencies/RuneMate.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_201 (x32)"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

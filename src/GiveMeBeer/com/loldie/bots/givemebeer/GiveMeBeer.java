@@ -1,78 +1,49 @@
 package com.loldie.bots.givemebeer;
-import javafx.scene.Node;
-import java.io.IOException;
-import javafx.fxml.FXMLLoader;
-import javafx.application.Platform;
-
-import com.loldie.bots.common.AllWorldsOccupiedException;
-import com.loldie.bots.common.banks.Falador;
-import javafx.beans.property.ObjectProperty;
-import com.loldie.bots.common.logic.LogicTree;
-import java.util.concurrent.ExecutionException;
-import javafx.beans.property.SimpleObjectProperty;
-import com.runemate.game.api.hybrid.util.Resources;
+import com.loldie.bots.common.locations.Falador;
+import com.loldie.bots.common.logic.ILogicNode;
+import com.loldie.bots.common.ITimedTaskDoneHandler;
+import com.loldie.bots.common.MembershipPreference;
 import com.loldie.bots.common.branches.HasGoldBranch;
+import com.loldie.bots.common.inherit.StandardTreeBot;
 import com.loldie.bots.common.tasks.BankEverythingTask;
-import com.runemate.game.api.script.framework.LoopingBot;
 import com.loldie.bots.common.tasks.WithdrawBankMoneyTask;
 import com.loldie.bots.common.branches.InventoryFullBranch;
-import com.runemate.game.api.client.embeddable.EmbeddableUI;
+import com.loldie.bots.common.inherit.StandardUIController;
+import com.loldie.bots.common.items.ItemName;
+import com.loldie.bots.common.items.ItemPricePoller;
 import com.loldie.bots.givemebeer.branches.InFaladorBarBranch;
-@SuppressWarnings("restriction")
-public class GiveMeBeer extends LoopingBot implements EmbeddableUI
+import com.runemate.game.api.hybrid.Environment;
+public class GiveMeBeer extends StandardTreeBot
 {
-	private static final int FAILSAFE_AMOUNT = 3 * (28 + 1);
-	private static final int WITHDRAW_AMOUNT = 3 * (28 * 2);
-	private ObjectProperty<Node> botInterface;
-	private UIController uiController;
-	private LogicTree logicTree;
+	private static final int BEER_ID = 1913;
+	private static final int BEER_PRICE = 3;
+	private static final int ITEMS_PER_BANK = 28;
+	private static final int WITHDRAW_AMOUNT = BEER_PRICE * ITEMS_PER_BANK;
+	private static final ItemName BEER_NAME = new ItemName("Beer", "Beers");
+	private static final ItemPricePoller PRICE_POLLER = new ItemPricePoller(BEER_ID);
 	public GiveMeBeer()
 	{
-		WithdrawBankMoneyTask withdrawBankMoneyTask = new WithdrawBankMoneyTask(WITHDRAW_AMOUNT);
-		setEmbeddableUI(this);
-		this.uiController = new UIController();
-		this.logicTree = new LogicTree(new HasGoldBranch(FAILSAFE_AMOUNT, new InventoryFullBranch(Falador.getWestBankAccessBranch(new HasGoldBranch(WITHDRAW_AMOUNT, new BankEverythingTask(this.uiController), withdrawBankMoneyTask) ), new InFaladorBarBranch()),
-													 	 Falador.getWestBankAccessBranch(withdrawBankMoneyTask)
-													    ), false);
+		super(new StandardUIController(BEER_NAME, PRICE_POLLER, ITEMS_PER_BANK), MembershipPreference.PREFERED, true, true);
+		ILogicNode inventoryFullPath;
+		ILogicNode faladorBarBranch = new InFaladorBarBranch();
+		ILogicNode bankEverythingTask = new BankEverythingTask((ITimedTaskDoneHandler)this.uiController);
+		ILogicNode getMoneyBranch = Falador.getWestBankAccessBranch(new WithdrawBankMoneyTask(WITHDRAW_AMOUNT));
+		ILogicNode bankEverythingBranch = Falador.getWestBankAccessBranch(bankEverythingTask);
+		if (Environment.isOSRS())
+		{
+			//This "HasGoldBranch" will check if we have enough for ONE more beer while the inventory is full
+			inventoryFullPath = new HasGoldBranch(BEER_PRICE, faladorBarBranch, bankEverythingBranch);
+		}
+		else
+		{
+			inventoryFullPath = bankEverythingBranch;
+		}
+		this.logicTree = new InventoryFullBranch(inventoryFullPath, new HasGoldBranch(BEER_PRICE, faladorBarBranch, getMoneyBranch));
 	}
 	@Override
 	public void onStart(String... args)
 	{
-		setLoopDelay(450, 650);
+		this.setLoopDelay(450, 650);
 		System.out.println("Loaded GiveMeBeer v1.0");
-	}
-	@Override
-	public void onLoop()
-	{
-		try
-		{
-			logicTree.runTree();
-		}
-		catch (AllWorldsOccupiedException ex)
-		{
-			ex.printStackTrace();
-			this.stop();
-		}
-		uiController.update();
-		Platform.runLater(uiController);
-	}
-	@Override
-	public ObjectProperty<Node> botInterfaceProperty()
-	{
-		if (botInterface == null)
-		{
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			fxmlLoader.setController(uiController);
-			try
-			{
-				Node node = fxmlLoader.load(this.getPlatform().invokeAndWait( () -> Resources.getAsStream("com/loldie/bots/givemebeer/main_design.fxml") ));
-				botInterface = new SimpleObjectProperty<Node>(node);
-			}
-			catch (IOException | ExecutionException | InterruptedException ex)
-			{
-				ex.printStackTrace();
-			}
-		}
-		return botInterface;
 	}
 }

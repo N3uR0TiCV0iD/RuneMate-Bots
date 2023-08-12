@@ -1,0 +1,15 @@
+<manifest>
+	<main-class>com.loldie.bots.deathrunetrader.DeathRuneTrader</main-class>
+	<name>DeathRuneTrader</name>
+	<description>Trades death runes for profit!</description>
+	<version>1.0.0</version>
+	<compatibility>
+		<game-type>OSRS</game-type>
+	</compatibility>
+	<categories>
+		<category>MONEYMAKING</category>
+	</categories>
+    <resources>
+        <resource>com/loldie/bots/common/main_design.fxml</resource>
+    </resources>
+</manifest>

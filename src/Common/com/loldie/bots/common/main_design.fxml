@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="481.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane prefHeight="462.0" prefWidth="481.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Bot Info">
+            <content>
+              <AnchorPane fx:id="botInfoTab" minHeight="0.0" minWidth="0.0" prefHeight="364.0" prefWidth="485.0">
+                     <children>
+                        <Label fx:id="currTaskLabel" layoutX="15.0" layoutY="10.0" prefHeight="17.0" prefWidth="293.0" text="Current Task: Loading..." />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Player Watches">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</Pane>

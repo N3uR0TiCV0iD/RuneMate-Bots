@@ -3,6 +3,7 @@ import java.util.Random;
 import com.loldie.bots.common.Utils;
 import com.loldie.bots.common.logic.LogicTask;
 import com.runemate.game.api.hybrid.region.Npcs;
+import com.runemate.game.api.hybrid.Environment;
 import com.runemate.game.api.hybrid.entities.Npc;
 import com.runemate.game.api.hybrid.queries.results.LocatableEntityQueryResults;
 public class GetWoolTask extends LogicTask
@@ -20,7 +21,7 @@ public class GetWoolTask extends LogicTask
 	{
 		Npc sheep;
 		notifyNewTask("Getting wool...");
-		if (hasFakedIt || generator.nextInt(100) >= 5)
+		if (Environment.isOSRS() || hasFakedIt || generator.nextInt(100) >= 5) //5% chance of "faking it"
 		{
 			LocatableEntityQueryResults<Npc> sheeps = Npcs.newQuery().names("Sheep").actions("Shear").results();
 			boolean invalidSheep;

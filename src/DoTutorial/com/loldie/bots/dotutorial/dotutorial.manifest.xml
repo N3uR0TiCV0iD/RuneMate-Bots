@@ -1,0 +1,15 @@
+<manifest>
+	<main-class>com.loldie.bots.dotutorial.DoTutorial</main-class>
+	<name>DoTutorial</name>
+	<description>Does the tutorial island!</description>
+	<version>1.0.0</version>
+	<compatibility>
+		<game-type>OSRS</game-type>
+	</compatibility>
+	<categories>
+		<category>QUESTING</category>
+	</categories>
+    <resources>
+        <resource>com/loldie/bots/common/main_design.fxml</resource>
+    </resources>
+</manifest>

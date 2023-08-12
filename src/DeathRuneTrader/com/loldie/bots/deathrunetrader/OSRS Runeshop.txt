@@ -1,0 +1,10 @@
+5gp when:
+- 4750 Fire
+- 4750 Water
+- 4750 Air
+- 4750 Earth
+- 4333 Mind
+- 4666 Body
+
+> 250gp when:
+- 88 Death (Buy until 126?)
